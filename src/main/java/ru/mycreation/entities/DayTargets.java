@@ -1,9 +1,11 @@
 package ru.mycreation.entities;
 
+import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.sql.Time;
 
 @Data
@@ -17,6 +19,7 @@ public class DayTargets {
     @Column
     private Long id;
 
+    @Size(min=2, max=100)
     @Column
     private String title;
 
@@ -26,6 +29,7 @@ public class DayTargets {
     @Column
     private char creation;
 
+    @NotNull
     @Column
     private Time time;
 

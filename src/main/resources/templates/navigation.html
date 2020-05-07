@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Navigation</title>
+    <link rel="stylesheet" th:href="@{style.css}">
+</head>
+<body>
+    <div th:fragment="navigation(activeTab)">
+        <div class="nav">
+            <img class="logo" src="logo.png" alt="logo">
+            <ul class="menu_list">
+                <li><a th:href="@{/}" class="menu_link">Главная</a></li>
+                <li><a th:href="@{/targets}" class="menu_link">Добавить цель</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

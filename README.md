@@ -1,2 +1,2 @@
 # MyCreation
-smart planner 
+smart week planner 

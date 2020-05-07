@@ -19,8 +19,8 @@ public class Days {
     private Long id;
 
     @Column
-    private Date date;
+    private String title;
 
-    @OneToMany
+    @OneToMany(mappedBy = "days")
     private List<DayTargets> dayTargets;
 }

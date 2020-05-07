@@ -1,7 +1,8 @@
 drop table if exists days cascade;
 create table days
-(id bigserial, date date , primary key(id));
-insert into days(date) values ('16.04.2020');
+(id bigserial, title varchar(15) , primary key(id));
+insert into days(title) values ('Понедельник'),('Вторник'),
+('Среда'),('Четверг'),('Пятница'),('Суббота'),('Воскресенье');
 
 drop table if exists day_targets cascade;
 create table day_targets
@@ -13,22 +14,7 @@ insert into day_targets (title, priority, creation, time, days_id) values
 ('запрогать аутентификацию',4,'и','02:00:00',1),
 ('проверить почту',2,'с','00:20:00',1);
 
-drop table if exists five_y_targets cascade;
-create table five_y_targets
-(id bigserial primary key, title varchar(255));
-
-drop table if exists three_y_targets cascade;
-create table three_y_targets
-(id bigserial primary key, title varchar(255));
-
-drop table if exists year_targets cascade;
-create table year_targets
-(id bigserial primary key, title varchar(255));
-
-drop table if exists month_targets cascade;
-create table month_targets
-(id bigserial primary key, title varchar(255));
-
 drop table if exists week_targets cascade;
 create table week_targets
 (id bigserial primary key, title varchar(255));
+insert into week_targets (title) values ('позвонить маме'), ('запрогать аутентификацию'), ('проверить почту');

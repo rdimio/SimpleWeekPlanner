@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Расстановка целей</title>
+    <link rel="stylesheet" th:href="@{style.css}">
+    <script src="https://kit.fontawesome.com/90f5d1d736.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<div class="container">
+    <div th:replace="~{navigation :: navigation(targets)}"></div>
+    <div class="header">Расстановка целей</div>
+    <form class="targets__plan" th:action="@{/targets}" th:object="${target}" method="post">
+        <div class="target_option">
+            <label class="target_head">Название</label>
+            <input th:field="*{title}" type="text" class="target__title"  placeholder="Название">
+        </div>
+        <div class="target_option">
+            <label class="target_head">Приоритет</label>
+            <select th:field="*{priority}">
+                <option th:text="1" th:value="1"/>
+                <option th:text="2" th:value="2"/>
+                <option th:text="3" th:value="3"/>
+                <option th:text="4" th:value="4"/>
+            </select>
+        </div>
+        <div class="target_option">
+            <label class="target_head">Область развития</label>
+            <select th:field="*{creation}">
+                <option th:text="и" th:value="и"/>
+                <option th:text="ф" th:value="ф"/>
+                <option th:text="с" th:value="с"/>
+                <option th:text="д" th:value="д"/>
+            </select>
+        </div>
+        <div class="target_option">
+            <label class="target_head">Время выполнения</label>
+            <input th:field="*{time}" type="text" class="target__title" placeholder="00:00:00">
+        </div>
+        <div class="target_option">
+            <label class="target_head">День недели</label>
+            <select th:field="*{days}">
+                <option th:each="d : ${days}" th:text="${d.title}" th:value="${d.id}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn_save target_option"></button>
+    </form>
+    <div class="description">
+        <ul class="description_type">
+            <h3 class="description_header">Приоритеты</h3>
+            <li class="description_list">Наивысший приоритет (4) – то, что Вы постоянно откладываете  «на потом»,
+                но оно неминуемо принесет плоды в будущем. К этой категории относятся действия, направленные на
+                поддержку отличного состояния здоровья, создание новых связей, планирование, восстановление сил,
+                профилактические действия.</li>
+            <li class="description_list">Высокий приоритет (3) – срочные и важные дела: разрешение критических
+                ситуаций, неотложные проблемы, проекты с горящим сроком выполнения.</li>
+            <li class="description_list">Средний приоритет (2) - срочные и неважные дела: корреспонденция,
+                телефонные звонки, предстоящие заседания.</li>
+            <li class="description_list">Низкий приоритет (1) – несрочные и неважные дела: зависание в соцсетях,
+                праздный образ жизни, просмотр телевизора и т.д.</li>
+        </ul>
+        <ul class="description_type">
+            <h3 class="description_header">Область развития</h3>
+            <li class="description_list">Духовное развитие (д) </li>
+            <li class="description_list">Социальное развитие (с)</li>
+            <li class="description_list">Интеллектуальное развитие (и)</li>
+            <li class="description_list">Физическое развитие (ф)</li>
+        </ul>
+    </div>
+    <div class="footer">&copy Vadim Rybakov product</div>
+</div>
+</body>
+</html>
