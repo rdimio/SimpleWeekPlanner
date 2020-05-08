@@ -11,4 +11,5 @@ import java.util.Set;
 public interface TargetRepository extends JpaRepository<DayTargets, Long> {
     @Query("SELECT DISTINCT d.title FROM DayTargets d")
     Set<String> findDistinctTitle();
+
 }

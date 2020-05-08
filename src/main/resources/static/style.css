@@ -59,6 +59,7 @@
 .target__bottom{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .target__title{
     width:120px;
@@ -69,12 +70,16 @@
     margin-left: 5px;
     opacity:0.6;
 }
+.edit_img_else {
+    width: 12px;
+}
 .edit_img:hover{
     opacity:1;
 }
 .targets__plan{
     display: flex;
     justify-content: center;
+    background-color: grey;
 }
 .target_option{
     display: flex;
@@ -84,9 +89,10 @@
 }
 .target_head{
     text-align: center;
-    font-family: Georgia, fantasy;
     font-size: 14px;
-    padding: 2px 3px;
+    padding: 10px 10px;
+    color:white;
+    font-family: cursive;
 }
 .footer {
     position: absolute;
@@ -96,8 +102,9 @@
     background-image: url("check-solid.svg");
     height:35px;
     width:35px;
-    margin-top:10px;
+    margin-top:18px;
     background-color:white;
+    border-radius:10px;
 }
 .btn_save:hover{
     position: relative;

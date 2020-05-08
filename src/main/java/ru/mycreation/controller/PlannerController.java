@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import ru.mycreation.entities.DayTargets;
 import ru.mycreation.entities.Days;
 import ru.mycreation.service.DayService;
@@ -42,18 +40,20 @@ public class PlannerController {
     }
 
     @GetMapping("/targets")
-    public String targets(Model model){
+    public String targets(Model model, @RequestParam (required = false) Long id){
         List<Days> days = dayService.findAll();
         DayTargets target = new DayTargets();
+        if(id != null) {
+            target = targetService.findById(id);
+        }
         model.addAttribute("target", target);
         model.addAttribute("days", days);
         return "targets_page";
     }
 
-
     @PostMapping("/targets")
-    public String addTarget(@ModelAttribute(name = "target") @Valid DayTargets target, BindingResult bindingResult,
-                            Model model) {
+    public String addTarget(@ModelAttribute(name = "target") @Valid DayTargets target,
+                            BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             List<Days> days = dayService.findAll();
             model.addAttribute("days", days);
@@ -61,7 +61,13 @@ public class PlannerController {
         } else {
             targetService.save(target);
         }
-        return "redirect:/targets";
+        return "redirect:/";
+    }
+
+    @GetMapping("/targets/delete/{id}")
+    public String deleteTarget(@PathVariable Long id){
+        targetService.delete(id);
+        return "redirect:/";
     }
 
 }

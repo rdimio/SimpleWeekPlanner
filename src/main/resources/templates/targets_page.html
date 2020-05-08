@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org" lang="ru">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8"/>
@@ -13,6 +13,7 @@
     <div th:replace="~{navigation :: navigation(targets)}"></div>
     <div class="header">Расстановка целей</div>
     <form class="targets__plan" th:action="@{/targets}" th:object="${target}" method="post">
+        <input th:field="*{id}" type="hidden" class="target__title" >
         <div class="target_option">
             <label class="target_head">Название</label>
             <input th:field="*{title}" type="text" class="target__title"  placeholder="Название">
@@ -52,16 +53,16 @@
     <div class="description">
         <ul class="description_type">
             <h3 class="description_header">Приоритеты</h3>
-            <li class="description_list">Наивысший приоритет (4) – то, что Вы постоянно откладываете  «на потом»,
-                но оно неминуемо принесет плоды в будущем. К этой категории относятся действия, направленные на
+            <li class="description_list">Наивысший приоритет (4)&nbsp;&mdash; то, что&nbsp;Вы постоянно откладываете &laquo;на&nbsp;потом&raquo;,
+                но&nbsp;оно неминуемо принесет плоды в&nbsp;будущем. К&nbsp;этой категории относятся действия, направленные на
                 поддержку отличного состояния здоровья, создание новых связей, планирование, восстановление сил,
                 профилактические действия.</li>
-            <li class="description_list">Высокий приоритет (3) – срочные и важные дела: разрешение критических
-                ситуаций, неотложные проблемы, проекты с горящим сроком выполнения.</li>
-            <li class="description_list">Средний приоритет (2) - срочные и неважные дела: корреспонденция,
+            <li class="description_list">Высокий приоритет (3)&nbsp;&mdash; срочные и&nbsp;важные дела: разрешение критических
+                ситуаций, неотложные проблемы, проекты с&nbsp;горящим сроком выполнения.</li>
+            <li class="description_list">Средний приоритет (2)&nbsp;&mdash; срочные и&nbsp;неважные дела: корреспонденция,
                 телефонные звонки, предстоящие заседания.</li>
-            <li class="description_list">Низкий приоритет (1) – несрочные и неважные дела: зависание в соцсетях,
-                праздный образ жизни, просмотр телевизора и т.д.</li>
+            <li class="description_list">Низкий приоритет (1)&nbsp;&mdash; несрочные и&nbsp;неважные дела: зависание в&nbsp;соцсетях,
+                праздный образ жизни, просмотр телевизора и&nbsp;т.д.</li>
         </ul>
         <ul class="description_type">
             <h3 class="description_header">Область развития</h3>
