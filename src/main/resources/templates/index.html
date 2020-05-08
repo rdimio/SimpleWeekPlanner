@@ -37,8 +37,8 @@
                         <img class="edit_img" src="edit-regular.svg" alt="edit-regular">
                     </a>
                 </div>
-                <div class="target target__bottom" th:each="w : ${week}">
-                    <div class="target target__title" th:text="${w.title}"></div>
+                <div class="target target__bottom" th:each="t : ${targets}">
+                    <div class="target target__title" th:text="${t}"></div>
                 </div>
             </div>
         </div>

@@ -6,6 +6,7 @@ import ru.mycreation.entities.DayTargets;
 import ru.mycreation.repository.TargetRepository;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class TargetService {
@@ -23,5 +24,8 @@ public class TargetService {
 
     public DayTargets save(DayTargets target){
         return targetRepository.save(target);
+    }
+
+    public Set<String> findDistinctTitle() { return targetRepository.findDistinctTitle();
     }
 }

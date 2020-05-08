@@ -7,23 +7,20 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.mycreation.entities.DayTargets;
 import ru.mycreation.entities.Days;
-import ru.mycreation.entities.WeekTargets;
 import ru.mycreation.service.DayService;
 import ru.mycreation.service.TargetService;
-import ru.mycreation.service.WeekService;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class PlannerController {
 
     private TargetService targetService;
     private DayService dayService;
-    private WeekService weekService;
 
     @Autowired
     public void setTargetService(TargetService targetService){
@@ -35,17 +32,12 @@ public class PlannerController {
         this.dayService = dayService;
     }
 
-    @Autowired
-    public void setWeekService(WeekService weekService){
-        this.weekService = weekService;
-    }
-
     @GetMapping("/")
     public String index(Model model){
         List<Days> days = dayService.findAll();
-        List<WeekTargets> week = weekService.findAll();
+        Set<String> targets = targetService.findDistinctTitle();
+        model.addAttribute("targets", targets);
         model.addAttribute("days", days);
-        model.addAttribute("week", week);
         return "index";
     }
 
@@ -61,13 +53,12 @@ public class PlannerController {
 
     @PostMapping("/targets")
     public String addTarget(@ModelAttribute(name = "target") @Valid DayTargets target, BindingResult bindingResult,
-                            WeekTargets week, Model model) {
+                            Model model) {
         if (bindingResult.hasErrors()) {
             List<Days> days = dayService.findAll();
             model.addAttribute("days", days);
             return "targets_page";
         } else {
-            weekService.save(week);
             targetService.save(target);
         }
         return "redirect:/targets";
