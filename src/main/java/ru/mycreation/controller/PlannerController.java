@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.mycreation.entities.DayTargets;
 import ru.mycreation.entities.Days;
 import ru.mycreation.entities.WeekTargets;
@@ -54,15 +55,22 @@ public class PlannerController {
         DayTargets target = new DayTargets();
         model.addAttribute("target", target);
         model.addAttribute("days", days);
-        return "targets";
+        return "targets_page";
     }
 
+
     @PostMapping("/targets")
-    public String addTarget(Model model, @ModelAttribute(name = "target") @Valid DayTargets target, BindingResult bindingResult) {
+    public String addTarget(@ModelAttribute(name = "target") @Valid DayTargets target, BindingResult bindingResult,
+                            WeekTargets week, Model model) {
         if (bindingResult.hasErrors()) {
-            return "redirect:/targets";
+            List<Days> days = dayService.findAll();
+            model.addAttribute("days", days);
+            return "targets_page";
+        } else {
+            weekService.save(week);
+            targetService.save(target);
         }
-        targetService.save(target);
         return "redirect:/targets";
     }
+
 }

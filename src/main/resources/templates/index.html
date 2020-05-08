@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8"/>
@@ -20,7 +20,7 @@
                 <div class="target target__top">
                     <div class="day__title" th:text="${d.title}"></div>
                     <a class="btn_edit" th:href="@{'/day/edit/?d'}">
-                        <i class="far fa-edit"></i>
+                        <img class="edit_img" src="edit-regular.svg" alt="edit-regular">
                     </a>
                 </div>
                 <div class="target target__bottom" th:each="t : ${d.dayTargets}">
@@ -34,7 +34,7 @@
                 <div class="target target__top">
                     <div class="week__title"> Цели недели</div>
                     <a class="btn_edit" th:href="@{'/week/edit/?w'}">
-                        <i class="far fa-edit"></i>
+                        <img class="edit_img" src="edit-regular.svg" alt="edit-regular">
                     </a>
                 </div>
                 <div class="target target__bottom" th:each="w : ${week}">

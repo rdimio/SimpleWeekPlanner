@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org" lang="ru">
 
 <head>
     <meta charset="utf-8"/>
@@ -16,28 +16,30 @@
         <div class="target_option">
             <label class="target_head">Название</label>
             <input th:field="*{title}" type="text" class="target__title"  placeholder="Название">
+            <p class="target__title" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
         </div>
         <div class="target_option">
             <label class="target_head">Приоритет</label>
             <select th:field="*{priority}">
-                <option th:text="1" th:value="1"/>
-                <option th:text="2" th:value="2"/>
-                <option th:text="3" th:value="3"/>
-                <option th:text="4" th:value="4"/>
+                <option th:text="1" th:value="1"></option>
+                <option th:text="2" th:value="2"></option>
+                <option th:text="3" th:value="3"></option>
+                <option th:text="4" th:value="4"></option>
             </select>
         </div>
         <div class="target_option">
             <label class="target_head">Область развития</label>
             <select th:field="*{creation}">
-                <option th:text="и" th:value="и"/>
-                <option th:text="ф" th:value="ф"/>
-                <option th:text="с" th:value="с"/>
-                <option th:text="д" th:value="д"/>
+                <option th:text="и" th:value="и"></option>
+                <option th:text="ф" th:value="ф"></option>
+                <option th:text="с" th:value="с"></option>
+                <option th:text="д" th:value="д"></option>
             </select>
         </div>
         <div class="target_option">
             <label class="target_head">Время выполнения</label>
-            <input th:field="*{time}" type="text" class="target__title" placeholder="00:00:00">
+            <input th:field="*{time}" type="time" class="target__title">
+            <p class="target__title" th:if="${#fields.hasErrors('time')}" th:errors="*{time}"></p>
         </div>
         <div class="target_option">
             <label class="target_head">День недели</label>

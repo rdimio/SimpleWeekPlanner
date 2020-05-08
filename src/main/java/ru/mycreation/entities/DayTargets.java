@@ -1,14 +1,14 @@
 package ru.mycreation.entities;
 
-import com.sun.istack.NotNull;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import java.sql.Time;
 
-@Data
+//@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "day_targets")
@@ -19,7 +19,7 @@ public class DayTargets {
     @Column
     private Long id;
 
-    @Size(min=2, max=100)
+    @Size(min=2, max=100, message = "заполните поле")
     @Column
     private String title;
 
@@ -29,9 +29,9 @@ public class DayTargets {
     @Column
     private char creation;
 
-    @NotNull
+    @Pattern(regexp = "^[0-9]{2}:[0-9]{2}$",message = "заполните поле")
     @Column
-    private Time time;
+    private String time;
 
     @ManyToOne
     @JoinColumn(name = "days_id")

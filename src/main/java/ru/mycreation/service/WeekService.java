@@ -20,4 +20,8 @@ public class WeekService {
     public List<WeekTargets> findAll(){
         return weekRepository.findAll();
     }
+
+    public WeekTargets save(WeekTargets week) {
+        return weekRepository.save(week);
+    }
 }
