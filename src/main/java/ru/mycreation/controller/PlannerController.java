@@ -7,10 +7,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.mycreation.entities.DayTargets;
 import ru.mycreation.entities.Days;
+import ru.mycreation.entities.User;
 import ru.mycreation.service.DayService;
 import ru.mycreation.service.TargetService;
+import ru.mycreation.service.UserService;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 import java.util.Set;
 
@@ -19,6 +22,7 @@ public class PlannerController {
 
     private TargetService targetService;
     private DayService dayService;
+    private UserService userService;
 
     @Autowired
     public void setTargetService(TargetService targetService){
@@ -26,8 +30,27 @@ public class PlannerController {
     }
 
     @Autowired
-    public void setTargetService(DayService dayService){
+    public void setDayService(DayService dayService){
         this.dayService = dayService;
+    }
+
+    @Autowired
+    public void setUserService(UserService userService) { this.userService = userService; }
+
+    @GetMapping("/login")
+    public String loginPage() {
+        return "login_page";
+    }
+
+    @GetMapping("/profile")
+    public String profilePage(Model model, Principal principal) {
+        if (principal == null) {
+            return "redirect:/";
+        }
+        String name = principal.getName();
+        User user = userService.findByLogin(name);
+        model.addAttribute("user", user);
+        return "profile";
     }
 
     @GetMapping("/")

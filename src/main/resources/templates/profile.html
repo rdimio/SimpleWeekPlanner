@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Профиль пользователя</title>
+    <link rel="stylesheet" th:href="@{style.css}">
+</head>
+
+<body>
+
+<div class="container">
+    <div th:replace="~{navigation :: navigation(Profile)}"></div>
+
+    <h1>Профиль</h1>
+
+    <h5 th:text="'Name: ' + ${user.login}"></h5>
+    <h5 th:text="'Email: ' + ${user.email}"></h5>
+</div>
+
+</body>
+</html>

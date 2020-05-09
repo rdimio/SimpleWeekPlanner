@@ -18,12 +18,14 @@ public class TargetService {
         this.targetRepository = targetRepository;
     }
 
+    @Transactional
     public DayTargets save(DayTargets target){
         return targetRepository.save(target);
     }
 
     public Set<String> findDistinctTitle() { return targetRepository.findDistinctTitle();
     }
+
     @Transactional
     public void delete(Long id) {
         targetRepository.deleteById(id);

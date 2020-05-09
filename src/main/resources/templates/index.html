@@ -5,7 +5,6 @@
     <meta charset="utf-8"/>
     <title>Заготовка планнера</title>
     <link rel="stylesheet" th:href="@{style.css}">
-    <link rel="stylesheet" th:href="@{font-awesome.min.css}">
     <script src="https://kit.fontawesome.com/90f5d1d736.js" crossorigin="anonymous"></script>
 </head>
 
@@ -19,15 +18,16 @@
             <div class="target__block" th:each="d : ${days}">
                 <div class="target target__top">
                     <div class="day__title" th:text="${d.title}"></div>
+                    <a class="btn_edit" th:href="@{/targets}">
+                        <img class="edit_img edit_img_else" src="plus-solid.svg" alt="edit-regular">
+                    </a>
                 </div>
                 <div class="target target__bottom" th:each="t : ${d.dayTargets}">
                     <div class="target target__title" th:text="${t.title}"></div>
                     <div class="target target__priority" th:text="${t.priority}"></div>
                     <div class="target target__creation" th:text="${t.creation}"></div>
                     <div class="target target__time" th:text="${t.time}"></div>
-                    <a class="btn_edit" th:href="@{/targets}">
-                        <img class="edit_img edit_img_else" src="plus-solid.svg" alt="edit-regular">
-                    </a>
+
                     <a class="btn_edit" th:href="@{'/targets?id=' + ${t.id}}">
                         <img class="edit_img" src="edit-regular.svg" alt="edit-regular">
                     </a>
@@ -35,10 +35,14 @@
                         <img class="edit_img edit_img_else" src="calendar-times-regular.svg" alt="trash-alt-regular">
                     </a>
                 </div>
+
             </div>
             <div class="target__block">
                 <div class="target target__top">
                     <div class="week__title"> Цели недели</div>
+                    <a class="btn_edit" th:href="@{/targets}">
+                        <img class="edit_img edit_img_else" src="plus-solid.svg" alt="edit-regular">
+                    </a>
                 </div>
                 <div class="target target__bottom" th:each="t : ${targets}">
                     <div class="target target__title" th:text="${t}"></div>
