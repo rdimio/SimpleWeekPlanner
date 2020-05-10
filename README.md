@@ -7,3 +7,4 @@ used dependencies:
 - Flyway
 - Spring Security
 - Postgres
+- Thymeleaf

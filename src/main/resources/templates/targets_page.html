@@ -14,6 +14,7 @@
     <div class="header">Расстановка целей</div>
     <form class="targets__plan" th:action="@{/targets}" th:object="${target}" method="post">
         <input th:field="*{id}" type="hidden" class="target__title" >
+        <input th:field="*{user}" type="hidden" class="target__title" >
         <div class="target_option">
             <label class="target_head">Название</label>
             <input th:field="*{title}" type="text" class="target__title"  placeholder="Название">

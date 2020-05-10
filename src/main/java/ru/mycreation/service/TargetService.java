@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.mycreation.entities.DayTargets;
+import ru.mycreation.entities.User;
 import ru.mycreation.repository.TargetRepository;
 
 import java.util.Set;
@@ -23,7 +24,7 @@ public class TargetService {
         return targetRepository.save(target);
     }
 
-    public Set<String> findDistinctTitle() { return targetRepository.findDistinctTitle();
+    public Set<String> findDistinctTitle(User user) { return targetRepository.findDistinctTitle(user);
     }
 
     @Transactional

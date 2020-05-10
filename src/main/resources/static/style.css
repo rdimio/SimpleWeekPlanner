@@ -128,4 +128,22 @@
     font-style: italic;
     list-style-type: none;
 }
+.authorization{
+    display: flex;
+    justify-content: space-between;
+}
+.sign{
+    border-radius: 12px;
+    margin-right:15px;
+    background-color: white;
+}
+.sign:hover{
+    background-color: black;
+    color: white;
+}
+.elements{
+    display: flex;
+    justify-content: space-between;
+}
+
 
