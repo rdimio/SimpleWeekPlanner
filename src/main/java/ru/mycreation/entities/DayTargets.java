@@ -27,7 +27,7 @@ public class DayTargets {
     private int priority;
 
     @Column
-    private char creation;
+    private String creation;
 
     @Pattern(regexp = "^[0-9]{2}:[0-9]{2}$",message = "заполните поле")
     @Column

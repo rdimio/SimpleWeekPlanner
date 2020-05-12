@@ -145,5 +145,36 @@
     display: flex;
     justify-content: space-between;
 }
+.dropdown_lang{
+    margin-right: 15px;
+    margin-top:18px;
+    list-style-type: none;
+    color:grey;
+
+}
+.dropdown_item{
+    visibility: hidden;
+    color:grey;
+}
+.dropdown_lang:hover .dropdown_item{
+    visibility: visible;
+    text-decoration: none;
+}
+.dropdown_item:hover{
+    color:black;
+}
+.logo{
+    align-self:flex-start
+}
+.profile{
+    display: flex;
+    justify-content: space-around;
+    flex-direction:column;
+}
+.profile_item{
+    margin: 10px 15px;
+}
+
+
 
 

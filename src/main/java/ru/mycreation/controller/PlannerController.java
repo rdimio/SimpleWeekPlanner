@@ -1,6 +1,7 @@
 package ru.mycreation.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,9 +15,7 @@ import ru.mycreation.service.UserService;
 
 import javax.validation.Valid;
 import java.security.Principal;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Controller
 public class PlannerController {
@@ -55,7 +54,12 @@ public class PlannerController {
     }
 
     @GetMapping("/")
-    public String index(){
+    public String index(Model model){
+        int lang_flag;
+        if(LocaleContextHolder.getLocale().equals(new Locale("ru"))){
+            lang_flag = 1;
+        } else lang_flag = 0;
+        model.addAttribute("lang_flag", lang_flag);
         return "index";
     }
 
@@ -64,7 +68,10 @@ public class PlannerController {
         String name = principal.getName();
         User user = userService.findByLogin(name);
         Set<String> targets = targetService.findDistinctTitle(user);
-        List<Days> days = dayService.findAll();
+        List<Days> days;
+        if(LocaleContextHolder.getLocale().equals(new Locale("ru"))){
+            days = dayService.findAllRus();
+        } else days = dayService.findAllEn();
         model.addAttribute("days", days);
         model.addAttribute("user", user);
         model.addAttribute("targets", targets);
@@ -73,7 +80,10 @@ public class PlannerController {
 
     @GetMapping("/targets")
     public String targets(Model model, @RequestParam (required = false) Long id, Principal principal){
-        List<Days> days = dayService.findAll();
+        List<Days> days;
+        if(LocaleContextHolder.getLocale().equals(new Locale("ru"))){
+            days = dayService.findAllRus();
+        } else days = dayService.findAllEn();
         DayTargets target = new DayTargets();
         String name = principal.getName();
         User user = userService.findByLogin(name);
@@ -92,7 +102,10 @@ public class PlannerController {
     public String addTarget(@ModelAttribute(name = "target") @Valid DayTargets target,
                             BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            List<Days> days = dayService.findAll();
+            List<Days> days;
+            if(LocaleContextHolder.getLocale().equals(new Locale("ru"))){
+                days = dayService.findAllRus();
+            } else days = dayService.findAllEn();
             model.addAttribute("days", days);
             return "targets_page";
         } else {

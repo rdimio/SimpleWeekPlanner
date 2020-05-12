@@ -3,18 +3,18 @@
 
 <head>
     <meta charset="utf-8"/>
-    <title>Простой недельный планер</title>
+    <title th:text="#{main.title}"></title>
     <link rel="stylesheet" th:href="@{style.css}">
     <script src="https://kit.fontawesome.com/90f5d1d736.js" crossorigin="anonymous"></script>
 </head>
-
 
 <body>
 <div class="container">
     <div class="top">
         <div th:replace="~{navigation :: navigation(targets)}"></div>
-        <div class="header">Добро пожаловать на страницу Вашего нового дневника!</div>
-        <div class="main_img"><img src="main_background.PNG" alt="main_background"></div>
+        <div class="header" th:text="#{main.header}"></div>
+        <div class="main_img"><img th:if="${lang_flag == 1}" src="main_background.PNG" alt="main_background"></div>
+        <div class="main_img"><img th:if="${lang_flag == 0}" src="main_background_en.PNG" alt="main_background"></div>
     </div>
     <div class="footer">&copy Vadim Rybakov product</div>
 </div>

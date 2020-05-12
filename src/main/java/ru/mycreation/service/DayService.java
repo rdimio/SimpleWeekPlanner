@@ -21,4 +21,8 @@ public class DayService {
     public List<Days> findAll(){
         return dayRepository.findAll();
     }
+
+    public List<Days> findAllRus() { return  dayRepository.findAllRus(); }
+
+    public List<Days> findAllEn() { return  dayRepository.findAllEn(); }
 }

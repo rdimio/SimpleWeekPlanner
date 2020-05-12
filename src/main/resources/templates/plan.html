@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8"/>
-    <title>Простой недельный планер</title>
+    <title th:text="#{plans.header}"></title>
     <link rel="stylesheet" th:href="@{style.css}">
     <script src="https://kit.fontawesome.com/90f5d1d736.js" crossorigin="anonymous"></script>
 </head>
@@ -12,7 +12,7 @@
 <div class="container">
     <div class="top">
         <div th:replace="~{navigation :: navigation(targets)}"></div>
-        <div class="header">Простой недельный планер</div>
+        <div class="header" th:text="#{plans.header}"></div>
         <div class="main">
             <div class="target__block" th:each="d : ${days}">
                 <div class="target target__top">
@@ -38,7 +38,7 @@
             </div>
             <div class="target__block">
                 <div class="target target__top">
-                    <div class="week__title"> Цели недели</div>
+                    <div class="week__title" th:text="#{plans.week}"></div>
                     <a class="btn_edit" th:href="@{/targets}">
                         <img class="edit_img edit_img_else" src="plus-solid.svg" alt="edit-regular">
                     </a>
@@ -49,10 +49,7 @@
             </div>
         </div>
     </div>
-<!--    <div class="elements">-->
-<!--        <div id="oil" style="width: 500px; height: 400px;"></div>-->
-<!--        <div id="air" style="width: 500px; height: 400px;"></div>-->
-<!--    </div>-->
+
     <div class="footer">&copy Vadim Rybakov product</div>
 </div>
 </body>
