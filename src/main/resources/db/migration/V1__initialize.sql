@@ -31,12 +31,16 @@ VALUES
 
 INSERT INTO users (password, login, email)
 VALUES
-('$2y$12$G3.H5B2vrDOfmrwl/he/8.IZ12zNXHqmRbm2FVoMiDdqkOHZCf8vW','admin','admin@gmail.com');
+('$2y$12$G3.H5B2vrDOfmrwl/he/8.IZ12zNXHqmRbm2FVoMiDdqkOHZCf8vW','admin','admin@gmail.com'),
+('$2y$12$G3.H5B2vrDOfmrwl/he/8.IZ12zNXHqmRbm2FVoMiDdqkOHZCf8vW','user1','user1@gmail.com'),
+('$2y$12$G3.H5B2vrDOfmrwl/he/8.IZ12zNXHqmRbm2FVoMiDdqkOHZCf8vW','user2','user2@gmail.com');
 
 INSERT INTO users_roles (user_id, role_id)
 VALUES
 (1, 1),
-(1, 2);
+(1, 2),
+(2, 1),
+(3, 1);
 
 drop table if exists days cascade;
 create table days

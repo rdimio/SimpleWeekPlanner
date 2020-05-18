@@ -9,25 +9,20 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import ru.mycreation.entities.Role;
 import ru.mycreation.entities.User;
-import ru.mycreation.repository.RoleRepository;
 import ru.mycreation.repository.UserRepository;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class UserService implements UserDetailsService {
+
     private UserRepository userRepository;
-    private RoleRepository roleRepository;
 
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
-    }
-
-    @Autowired
-    public void setRoleRepository(RoleRepository roleRepository) {
-        this.roleRepository = roleRepository;
     }
 
     public User findByLogin(String login) {
@@ -47,4 +42,11 @@ public class UserService implements UserDetailsService {
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }
 
+    public List<User> findAll() {return (List<User>) userRepository.findAll();}
+
+    public void delete(Long id) { userRepository.deleteById(id);
+    }
+
+    public void save(User user) { userRepository.save(user);
+    }
 }

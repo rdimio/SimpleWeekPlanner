@@ -11,7 +11,7 @@
 <body>
 <div class="container">
     <div class="top">
-        <div th:replace="~{navigation :: navigation(targets)}"></div>
+        <div th:replace="~{navigation :: navigation(plan)}"></div>
         <div class="header" th:text="#{plans.header}"></div>
         <div class="main">
             <div class="target__block" th:each="d : ${days}">
@@ -50,7 +50,10 @@
         </div>
     </div>
 
-    <div class="footer">&copy Vadim Rybakov product</div>
+    <div class="footer">
+        &copy Vadim Rybakov product <br>
+        <i>svadimio9217@gmail.com</i>
+    </div>
 </div>
 </body>
 </html>

@@ -111,7 +111,7 @@ public class PlannerController {
         } else {
             targetService.save(target);
         }
-        return "redirect:/plan";
+        return "targets_page";
     }
 
     @GetMapping("/targets/delete/{id}")

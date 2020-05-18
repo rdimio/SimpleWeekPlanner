@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"/>
+    <title th:text="#{users.header}"></title>
+    <link rel="stylesheet" th:href="@{style.css}">
+    <script src="https://kit.fontawesome.com/90f5d1d736.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<div class="container">
+    <div th:replace="~{navigation :: navigation(users)}"></div>
+    <div class="header" th:text="#{users.header}"></div>
+    <div class="users_info" th:each="u : ${users}">
+        <div class="user_info_title" th:text="${u.login}"></div>
+        <div class="user_info_title" th:text="${u.email}"></div>
+        <div class="user_info_title" th:each="r : ${u.roles}" th:text="${r.name}"></div>
+        <a class="user_info_title btn_edit" th:href="@{'/users?login=' + ${u.login}}">
+            <img class="edit_img" src="edit-regular.svg" alt="edit-regular">
+        </a>
+        <a class="user_info_title btn_edit" th:href="@{'/users/delete/'+ ${u.id}}">
+            <img class="edit_img edit_img_else" src="calendar-times-regular.svg" alt="trash-alt-regular">
+        </a>
+        <form th:if="${user!=null && u.login == user.login}" class="users_form user_info_title" th:action="@{/users}" th:object="${user}" method="post">
+            <input th:field="*{id}" type="hidden">
+            <input th:field="*{password}" type="hidden">
+            <div class="user_info">
+                <label class="user_head" th:text="#{user.login}"></label>
+                <input th:field="*{login}" type="text" class="user__title"  th:placeholder="#{user.login}">
+                <p class="user__title" th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></p>
+            </div>
+            <div class="user_info">
+                <label class="user_head" th:text="#{user.email}"></label>
+                <input th:field="*{email}" type="email" class="user__title"  th:placeholder="#{user.email}">
+                <p class="user__title" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+            </div>
+            <div class="user_info">
+                <label class="user_head" th:text="#{user.role}"></label>
+                <div th:each="r : ${roles}">
+                    <input type="checkbox" th:field="*{roles}" th:value="${r.id}" />
+                    <label th:for="${#ids.prev('roles')}" th:text="${r.name}"></label>
+                </div>
+            </div>
+            <button type="submit" class="btn_save btn_save_mini"></button>
+        </form>
+    </div>
+    <div class="footer">
+        &copy Vadim Rybakov product <br>
+        <i>svadimio9217@gmail.com</i>
+    </div>
+</div>
+</body>
+</html>

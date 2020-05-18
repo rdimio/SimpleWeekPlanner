@@ -18,10 +18,6 @@ public class DayService {
         this.dayRepository = dayRepository;
     }
 
-    public List<Days> findAll(){
-        return dayRepository.findAll();
-    }
-
     public List<Days> findAllRus() { return  dayRepository.findAllRus(); }
 
     public List<Days> findAllEn() { return  dayRepository.findAllEn(); }

@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container">
-    <div th:replace="~{navigation :: navigation(Profile)}"></div>
+    <div th:replace="~{navigation :: navigation(profile)}"></div>
     <div class="header" th:text="#{profile.header}"></div>
     <div class="profile">
         <div class="profile_item name">
@@ -20,7 +20,10 @@
             <p th:text="${user.email}"></p>
         </div>
     </div>
-    <div class="footer">&copy Vadim Rybakov product</div>
+    <div class="footer">
+        &copy Vadim Rybakov product <br>
+        <i>svadimio9217@gmail.com</i>
+    </div>
 </div>
 </body>
 </html>

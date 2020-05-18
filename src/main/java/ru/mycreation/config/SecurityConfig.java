@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import ru.mycreation.service.UserService;
 
 @Configuration
@@ -25,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/users/**").hasAnyRole("ADMIN")
+                .antMatchers("/users/**").hasRole("ADMIN")
                 .antMatchers("/profile/**","/plan/**","/targets/**").authenticated()
                 .anyRequest().permitAll()
                 .and()

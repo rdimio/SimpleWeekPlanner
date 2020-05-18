@@ -13,8 +13,8 @@
     <div th:replace="~{navigation :: navigation(targets)}"></div>
     <div class="header" th:text="#{targets.header}"></div>
     <form class="targets__plan" th:action="@{/targets}" th:object="${target}" method="post">
-        <input th:field="*{id}" type="hidden" class="target__title" >
-        <input th:field="*{user}" type="hidden" class="target__title" >
+        <input th:field="*{id}" type="hidden">
+        <input th:field="*{user}" type="hidden">
         <div class="target_option">
             <label class="target_head" th:text="#{targets.title}"></label>
             <input th:field="*{title}" type="text" class="target__title"  th:placeholder="#{targets.title}">
@@ -44,7 +44,7 @@
             <p class="target__title" th:if="${#fields.hasErrors('time')}" th:errors="*{time}"></p>
         </div>
         <div class="target_option">
-            <label class="target_head" th:text="#{targets.day}">День недели</label>
+            <label class="target_head" th:text="#{targets.day}"></label>
             <select th:field="*{days}">
                 <option th:each="d : ${days}" th:text="${d.title}" th:value="${d.id}"></option>
             </select>
@@ -67,7 +67,10 @@
             <li class="description_list" th:text="#{creation.physical}"></li>
         </ul>
     </div>
-    <div class="footer">&copy Vadim Rybakov product</div>
+    <div class="footer">
+        &copy Vadim Rybakov product <br>
+        <i>svadimio9217@gmail.com</i>
+    </div>
 </div>
 </body>
 </html>

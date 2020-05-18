@@ -19,7 +19,7 @@ public class DayTargets {
     @Column
     private Long id;
 
-    @Size(min=2, max=100, message = "заполните поле")
+    @Size(min=2, max=100, message = "min=2, max=100")
     @Column
     private String title;
 
