@@ -20,10 +20,7 @@
             <p th:text="${user.email}"></p>
         </div>
     </div>
-    <div class="footer">
-        &copy Vadim Rybakov product <br>
-        <i>svadimio9217@gmail.com</i>
-    </div>
+    <div th:replace="~{footer :: footer(profile)}"></div>
 </div>
 </body>
 </html>

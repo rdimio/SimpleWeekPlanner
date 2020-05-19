@@ -16,10 +16,7 @@
         <div class="main_img"><img th:if="${lang_flag == 1}" src="main_background.PNG" alt="main_background"></div>
         <div class="main_img"><img th:if="${lang_flag == 0}" src="main_background_en.PNG" alt="main_background"></div>
     </div>
-    <div class="footer">
-        &copy Vadim Rybakov product <br>
-        <i>svadimio9217@gmail.com</i>
-    </div>
+    <div th:replace="~{footer :: footer(home)}"></div>
 </div>
 </body>
 </html>

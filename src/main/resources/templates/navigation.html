@@ -12,7 +12,6 @@
             <img class="logo" src="logo.png" alt="logo">
             <ul class="menu_list">
                 <li><a th:href="@{/}" class="menu_link" th:text="#{nav.home}"></a></li>
-                <li><a th:href="@{/targets}" class="menu_link" th:text="#{nav.addTarget}"></a></li>
                 <li><a th:href="@{/plan}" class="menu_link" th:text="#{nav.plans}"></a></li>
                 <li><a th:href="@{/profile}" class="menu_link" th:text="#{nav.profile}"></a></li>
             </ul>
@@ -22,7 +21,7 @@
                 <li><a class="dropdown_item" th:href="@{/?lang=en}">eng</a></li>
             </ul>
             <div sec:authorize="isAnonymous()" class="authorization">
-                <a th:href="@{/targets}" class="menu_link sign" th:text="#{nav.login}"></a>
+                <a th:href="@{/plan}" class="menu_link sign" th:text="#{nav.login}"></a>
                 <a th:href="@{/login}" class="menu_link sign" th:text="#{nav.registration}"></a>
             </div>
             <div sec:authorize="hasRole('ADMIN')" class="user_link">

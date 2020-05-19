@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.sql.Time;
 
 //@Data
 @Getter
@@ -19,7 +20,6 @@ public class DayTargets {
     @Column
     private Long id;
 
-    @Size(min=2, max=100, message = "min=2, max=100")
     @Column
     private String title;
 
@@ -29,9 +29,8 @@ public class DayTargets {
     @Column
     private String creation;
 
-    @Pattern(regexp = "^[0-9]{2}:[0-9]{2}$",message = "заполните поле")
     @Column
-    private String time;
+    private Time time;
 
     @ManyToOne
     @JoinColumn(name = "days_id")
@@ -41,7 +40,4 @@ public class DayTargets {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public void setUser(User user) {
-        this.user = user;
-    }
 }

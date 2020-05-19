@@ -28,7 +28,6 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @NotEmpty
     @Column(name = "login")
     private String login;
 
@@ -46,4 +45,5 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<DayTargets> dayTargets;
+
 }

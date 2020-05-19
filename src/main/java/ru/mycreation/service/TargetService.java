@@ -7,6 +7,10 @@ import ru.mycreation.entities.DayTargets;
 import ru.mycreation.entities.User;
 import ru.mycreation.repository.TargetRepository;
 
+import java.sql.Time;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -34,6 +38,24 @@ public class TargetService {
 
     public DayTargets findById(Long id) {
         return targetRepository.findById(id).get();
+    }
+
+    public List<String> selectSumTimeByUserIdGroupByPriority(User user) {
+        List<String> priorities = new ArrayList<>();
+        for(String p : targetRepository.selectSumTimersByUserIdGroupByPriority(user)){
+            String s = p.replace(',','-');
+            priorities.add(s);
+        }
+        return priorities;
+    }
+
+    public List<String> selectSumTimeByUserIdGroupByCreation(User user) {
+        List<String> creations = new ArrayList<>();;
+        for(String c : targetRepository.selectSumTimersByUserIdGroupByCreation(user)){
+            String s = c.replace(',','-');
+            creations.add(s);
+        }
+        return creations;
     }
 
 }

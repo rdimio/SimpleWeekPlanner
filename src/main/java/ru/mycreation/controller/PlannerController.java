@@ -15,6 +15,7 @@ import ru.mycreation.service.UserService;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.sql.Time;
 import java.util.*;
 
 @Controller
@@ -64,21 +65,6 @@ public class PlannerController {
     }
 
     @GetMapping("/plan")
-    public String getPlan(Model model, Principal principal){
-        String name = principal.getName();
-        User user = userService.findByLogin(name);
-        Set<String> targets = targetService.findDistinctTitle(user);
-        List<Days> days;
-        if(LocaleContextHolder.getLocale().equals(new Locale("ru"))){
-            days = dayService.findAllRus();
-        } else days = dayService.findAllEn();
-        model.addAttribute("days", days);
-        model.addAttribute("user", user);
-        model.addAttribute("targets", targets);
-        return "plan";
-    }
-
-    @GetMapping("/targets")
     public String targets(Model model, @RequestParam (required = false) Long id, Principal principal){
         List<Days> days;
         if(LocaleContextHolder.getLocale().equals(new Locale("ru"))){
@@ -87,34 +73,31 @@ public class PlannerController {
         DayTargets target = new DayTargets();
         String name = principal.getName();
         User user = userService.findByLogin(name);
+        Set<String> targets = targetService.findDistinctTitle(user);
         if(id != null) {
             target = targetService.findById(id);
         } else {
             target.setUser(user);
         }
+        List<String> priority_time = targetService.selectSumTimeByUserIdGroupByPriority(user);
+        List<String> creation_time = targetService.selectSumTimeByUserIdGroupByCreation(user);
         model.addAttribute("user", user);
         model.addAttribute("target", target);
         model.addAttribute("days", days);
-        return "targets_page";
+        model.addAttribute("targets", targets);
+        model.addAttribute("priority_time", priority_time);
+        model.addAttribute("creation_time", creation_time);
+        return "plan";
     }
 
-    @PostMapping("/targets")
-    public String addTarget(@ModelAttribute(name = "target") @Valid DayTargets target,
-                            BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors()) {
-            List<Days> days;
-            if(LocaleContextHolder.getLocale().equals(new Locale("ru"))){
-                days = dayService.findAllRus();
-            } else days = dayService.findAllEn();
-            model.addAttribute("days", days);
-            return "targets_page";
-        } else {
-            targetService.save(target);
-        }
-        return "targets_page";
+
+    @PostMapping("/plan")
+    public String addTarget(@ModelAttribute(name = "target") DayTargets target) {
+        targetService.save(target);
+        return "redirect:/plan";
     }
 
-    @GetMapping("/targets/delete/{id}")
+    @GetMapping("/plan/delete/{id}")
     public String deleteTarget(@PathVariable Long id){
         targetService.delete(id);
         return "redirect:/plan";

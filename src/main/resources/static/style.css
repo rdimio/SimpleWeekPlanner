@@ -32,7 +32,7 @@
     margin: 15px 15px;
     text-align: center;
     font-family: "Arial Black", fantasy;
-    font-size: 20px;
+    font-size: 16px;
 }
 .main{
     margin-top: 15px;
@@ -80,7 +80,7 @@
 .targets__plan{
     display: flex;
     justify-content: center;
-    background-color: grey;
+    background-color: #8fb4f9;
 }
 .target_option{
     display: flex;
@@ -96,8 +96,12 @@
     font-family: cursive;
 }
 .footer {
-    position: absolute;
-    bottom: 35px;
+    margin-top:50px;
+    margin-bottom:30px;
+    border-top:1px solid black;
+    padding-top:15px;
+    display:flex;
+    justify-content:space-between;
 }
 .btn_save{
     background-image: url("check-solid.svg");
@@ -114,20 +118,28 @@
 .description {
     margin-top: 25px;
     display: flex;
-    justify-content:space-between;
-    flex-direction:column;
-    text-align:center;
-    align-items:center;
+    justify-content:space-around;
+    flex-wrap:wrap;
 }
 .description_type{
-    max-width:60%;
+    max-width:45%;
     margin-top:55px;
-}
+    padding:20px 20px;
+    border:1px solid black;
+    border-radius:50px;
+    text-align:center;
 
+}
 .description_list{
     margin-top:10px;
     font-style: italic;
     list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.description_list_title{
+    padding: 10px 10px;
 }
 .authorization{
     display: flex;

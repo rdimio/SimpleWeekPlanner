@@ -27,28 +27,26 @@
             <input th:field="*{password}" type="hidden">
             <div class="user_info">
                 <label class="user_head" th:text="#{user.login}"></label>
-                <input th:field="*{login}" type="text" class="user__title"  th:placeholder="#{user.login}">
-                <p class="user__title" th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></p>
+                <input th:field="*{login}" type="text" class="user__title"  th:placeholder="#{user.login}"
+                       required minlength="5" maxlength="50">
             </div>
             <div class="user_info">
                 <label class="user_head" th:text="#{user.email}"></label>
-                <input th:field="*{email}" type="email" class="user__title"  th:placeholder="#{user.email}">
-                <p class="user__title" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                <input th:field="*{email}" type="email" class="user__title"  th:placeholder="#{user.email}"
+                       required minlength="6" maxlength="80">
             </div>
             <div class="user_info">
                 <label class="user_head" th:text="#{user.role}"></label>
                 <div th:each="r : ${roles}">
                     <input type="checkbox" th:field="*{roles}" th:value="${r.id}" />
-                    <label th:for="${#ids.prev('roles')}" th:text="${r.name}"></label>
+                    <label th:for="${#ids.prev('roles')}" th:text="${r.name}" ></label>
+                    <p class="user__title" th:if="${#fields.hasErrors('roles')}" th:errors="*{roles}"></p>
                 </div>
             </div>
             <button type="submit" class="btn_save btn_save_mini"></button>
         </form>
     </div>
-    <div class="footer">
-        &copy Vadim Rybakov product <br>
-        <i>svadimio9217@gmail.com</i>
-    </div>
+    <div th:replace="~{footer :: footer(users)}"></div>
 </div>
 </body>
 </html>
