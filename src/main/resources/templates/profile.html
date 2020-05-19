@@ -8,19 +8,21 @@
 </head>
 <body>
 <div class="container">
-    <div th:replace="~{navigation :: navigation(profile)}"></div>
-    <div class="header" th:text="#{profile.header}"></div>
-    <div class="profile">
-        <div class="profile_item name">
-            <h5 th:text="#{profile.name}"></h5>
-            <p th:text="${user.login}"></p>
-        </div>
-        <div class="profile_item email">
-            <h5 th:text="#{profile.email}"></h5>
-            <p th:text="${user.email}"></p>
+    <div class="top">
+        <div th:replace="~{navigation :: navigation(profile)}"></div>
+        <div class="header" th:text="#{profile.header}"></div>
+        <div class="profile">
+            <div class="profile_item name">
+                <h5 th:text="#{profile.name}"></h5>
+                <p th:text="${user.login}"></p>
+            </div>
+            <div class="profile_item email">
+                <h5 th:text="#{profile.email}"></h5>
+                <p th:text="${user.email}"></p>
+            </div>
         </div>
     </div>
-    <div th:replace="~{footer :: footer(profile)}"></div>
+    <div class="footer"  th:replace="~{footer :: footer(profile)}"></div>
 </div>
 </body>
 </html>

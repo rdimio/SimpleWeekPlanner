@@ -85,35 +85,35 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="description">
-        <ul class="description_type">
-            <h3 class="header" th:text="#{targets.priority}"></h3>
-            <li class="description_list" th:text="#{priority.max}"></li>
-            <li class="description_list" th:text="#{priority.high}"></li>
-            <li class="description_list" th:text="#{priority.med}"></li>
-            <li class="description_list" th:text="#{priority.low}"></li>
-        </ul>
-        <ul class="description_type">
-            <h3 class="header" th:text="#{targets.creation}"></h3>
-            <li class="description_list" th:text="#{creation.spirit}"></li>
-            <li class="description_list" th:text="#{creation.social}"></li>
-            <li class="description_list" th:text="#{creation.intelligence}"></li>
-            <li class="description_list" th:text="#{creation.physical}"></li>
-            <li class="description_list" th:text="#{no.creation}"></li>
-        </ul>
-    </div>
-    <div class="description">
-        <div class="description_type">
-            <h3 class="header" th:text="#{targets.priority.time}"></h3>
-            <div  th:each="p : ${priority_time}">
-                <div class="description_list_title" th:text="${p}"></div>
-            </div>
+        <div class="description">
+            <ul class="description_type">
+                <h3 class="header" th:text="#{targets.priority}"></h3>
+                <li class="description_list" th:text="#{priority.max}"></li>
+                <li class="description_list" th:text="#{priority.high}"></li>
+                <li class="description_list" th:text="#{priority.med}"></li>
+                <li class="description_list" th:text="#{priority.low}"></li>
+            </ul>
+            <ul class="description_type">
+                <h3 class="header" th:text="#{targets.creation}"></h3>
+                <li class="description_list" th:text="#{creation.spirit}"></li>
+                <li class="description_list" th:text="#{creation.social}"></li>
+                <li class="description_list" th:text="#{creation.intelligence}"></li>
+                <li class="description_list" th:text="#{creation.physical}"></li>
+                <li class="description_list" th:text="#{no.creation}"></li>
+            </ul>
         </div>
-        <div class="description_type">
-            <h3 class="header" th:text="#{targets.creation.time}"></h3>
-            <div  th:each="c : ${creation_time}">
-                <div class="description_list_title" th:text="${c}"></div>
+        <div class="description">
+            <div class="description_type">
+                <h3 class="header" th:text="#{targets.priority.time}"></h3>
+                <div  th:each="p : ${priority_time}">
+                    <div class="description_list_title" th:text="${p}"></div>
+                </div>
+            </div>
+            <div class="description_type">
+                <h3 class="header" th:text="#{targets.creation.time}"></h3>
+                <div  th:each="c : ${creation_time}">
+                    <div class="description_list_title" th:text="${c}"></div>
+                </div>
             </div>
         </div>
     </div>
