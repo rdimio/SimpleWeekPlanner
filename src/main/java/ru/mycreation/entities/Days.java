@@ -3,8 +3,6 @@ package ru.mycreation.entities;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 //@Data

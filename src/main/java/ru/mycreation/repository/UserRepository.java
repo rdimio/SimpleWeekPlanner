@@ -6,6 +6,7 @@ import ru.mycreation.entities.User;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
+
     User findOneByLogin(String login);
-    boolean existsByLogin(String login);
+
 }

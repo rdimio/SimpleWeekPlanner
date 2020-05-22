@@ -29,3 +29,5 @@ build/
 
 ### VS Code ###
 .vscode/
+/application.log
+/src/main/resources/private.properties
