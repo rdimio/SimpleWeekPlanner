@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+<body>
+<div class="container">
+    <br>
+    <h1 th:text="${userDto.getLogin() + '!'}"></h1>
+    <p style="margin-bottom: 40px">Please, verify your account by clicking the link below</p>
+    <a href="registration_form" th:text="@{'http://localhost:8189/mycreation/registration/confirm/'+${userDto.getToken()}}"></a>
+    <p>Thanks for using our service</p>
+</div>
+</body>
+</html>

@@ -7,9 +7,7 @@ import ru.mycreation.entities.DayTargets;
 import ru.mycreation.entities.User;
 import ru.mycreation.repository.TargetRepository;
 
-import java.sql.Time;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
@@ -24,8 +22,8 @@ public class TargetService {
     }
 
     @Transactional
-    public DayTargets save(DayTargets target){
-        return targetRepository.save(target);
+    public void save(DayTargets target){
+        targetRepository.save(target);
     }
 
     public Set<String> findDistinctTitle(User user) { return targetRepository.findDistinctTitle(user);

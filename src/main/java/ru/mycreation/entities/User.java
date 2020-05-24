@@ -8,7 +8,6 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.List;
 
@@ -24,7 +23,6 @@ public class User {
     @Column(name = "id")
     private Long id;
 
-    @Size(min=3, max=80)
     @Column(name = "password")
     private String password;
 
@@ -32,9 +30,14 @@ public class User {
     private String login;
 
     @Email
-    @Size(min=3, max=50)
     @Column(name = "email")
     private String email;
+
+    @Column(name = "token")
+    private String token;
+
+    @Column(name = "enabled")
+    private boolean enabled;
 
     @NotEmpty
     @ManyToMany(fetch = FetchType.EAGER)
@@ -43,7 +46,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<DayTargets> dayTargets;
 
 }

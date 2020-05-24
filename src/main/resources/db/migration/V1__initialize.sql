@@ -2,8 +2,10 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users (
   id                    bigserial,
   password              VARCHAR(80),
-  email                 VARCHAR(50) UNIQUE,
-  login            VARCHAR(50),
+  email                 VARCHAR(30) UNIQUE,
+  login                 VARCHAR(20),
+  token                 VARCHAR(80) DEFAULT null,
+  enabled               boolean DEFAULT false,
   PRIMARY KEY (id)
 );
 
