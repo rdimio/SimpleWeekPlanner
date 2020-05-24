@@ -8,7 +8,6 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.List;
 
@@ -20,11 +19,10 @@ import java.util.List;
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
 
-    @Size(min=3, max=80)
     @Column(name = "password")
     private String password;
 
@@ -32,7 +30,6 @@ public class User {
     private String login;
 
     @Email
-    @Size(min=3, max=50)
     @Column(name = "email")
     private String email;
 

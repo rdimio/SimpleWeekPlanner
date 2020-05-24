@@ -5,4 +5,5 @@ import ru.mycreation.entities.Role;
 
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {
+    <T> T findOneByName(String role_user);
 }

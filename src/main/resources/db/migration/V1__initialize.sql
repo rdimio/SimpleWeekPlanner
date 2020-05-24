@@ -2,8 +2,8 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users (
   id                    bigserial,
   password              VARCHAR(80),
-  email                 VARCHAR(50) UNIQUE,
-  login            VARCHAR(50),
+  email                 VARCHAR(30) UNIQUE,
+  login                 VARCHAR(20),
   PRIMARY KEY (id)
 );
 
@@ -41,6 +41,18 @@ VALUES
 (1, 2),
 (2, 1),
 (3, 1);
+
+DROP TABLE IF EXISTS tokens;
+CREATE TABLE tokens (
+  id                    bigserial,
+  token                 VARCHAR(30) UNIQUE,
+  password              VARCHAR(80),
+  email                 VARCHAR(30) UNIQUE,
+  login                 VARCHAR(20),
+  expiryDate            TIMESTAMP,
+  calculateExpiryDate   TIMESTAMP,
+  PRIMARY KEY (id)
+);
 
 drop table if exists days cascade;
 create table days

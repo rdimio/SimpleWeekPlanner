@@ -44,7 +44,7 @@ public class UserController {
 
     @PostMapping("/users")
     public String editUser(@ModelAttribute(name = "user") @Valid User user,
-                           BindingResult bindingResult, Model model){
+                           BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             List<User> users = userService.findAll();
             List<Role> roles = roleService.findAll();

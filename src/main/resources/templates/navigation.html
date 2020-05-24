@@ -22,7 +22,7 @@
             </ul>
             <div sec:authorize="isAnonymous()" class="authorization">
                 <a th:href="@{/plan}" class="menu_link sign" th:text="#{nav.login}"></a>
-                <a th:href="@{/login}" class="menu_link sign" th:text="#{nav.registration}"></a>
+                <a th:href="@{/registration}" class="menu_link sign" th:text="#{nav.registration}"></a>
             </div>
             <div sec:authorize="hasRole('ADMIN')" class="user_link">
                 <a class="menu_link" th:href="@{/users}" th:text="#{nav.users}"></a>

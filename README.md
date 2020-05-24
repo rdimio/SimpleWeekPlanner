@@ -1,5 +1,5 @@
 # MyCreation
-smart week planner 
+simple week planner 
 
 developed on Spring Boot
 used dependencies:
