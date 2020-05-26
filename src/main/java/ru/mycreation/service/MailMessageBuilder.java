@@ -15,9 +15,15 @@ public class MailMessageBuilder {
         this.templateEngine = templateEngine;
     }
 
-    public String buildUserEmail(UserDto userDto) {
+    public String buildUserRegEmail(UserDto userDto) {
         Context context = new Context();
         context.setVariable("userDto", userDto);
         return templateEngine.process("registration-mail", context);
+    }
+
+    public String buildUserResetEmail(UserDto userDto) {
+        Context context = new Context();
+        context.setVariable("userDto", userDto);
+        return templateEngine.process("reset_password_mail", context);
     }
 }

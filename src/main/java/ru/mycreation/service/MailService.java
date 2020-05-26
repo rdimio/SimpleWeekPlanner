@@ -1,7 +1,5 @@
 package ru.mycreation.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -16,8 +14,6 @@ import javax.mail.internet.MimeMessage;
 public class MailService {
     private JavaMailSender sender;
     private MailMessageBuilder messageBuilder;
-
-    private Logger logger = LoggerFactory.getLogger(MailService.class);
 
     @Autowired
     public void setSender(JavaMailSender sender) {
@@ -40,11 +36,21 @@ public class MailService {
 
     public void sendConfRegMail(UserDto userDto) {
         try {
-            sendMail(userDto.getEmail(), String.format("confirm the registration"), messageBuilder.buildUserEmail(userDto));
+            sendMail(userDto.getEmail(), String.format("confirm the registration"), messageBuilder.buildUserRegEmail(userDto));
         } catch (MessagingException e) {
-            logger.warn("Unable to create order mail message for order: " + userDto.getToken());
+            throw new RuntimeException("Unable to create order mail message for user: " + userDto.getToken());
         } catch (MailException e) {
-            logger.warn("Unable to send order mail message for order: " + userDto.getToken());
+            throw new RuntimeException("Unable to send order mail message for user: " + userDto.getToken());
+        }
+    }
+
+    public void sendResetPasMail(UserDto userDto) {
+        try {
+            sendMail(userDto.getEmail(), String.format("reset password"), messageBuilder.buildUserResetEmail(userDto));
+        } catch (MessagingException e) {
+            throw new RuntimeException("Unable to create order mail message for user: " + userDto.getToken());
+        } catch (MailException e) {
+            throw new RuntimeException("Unable to send order mail message for user: " + userDto.getToken());
         }
     }
 }
