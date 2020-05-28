@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"/>
+    <title th:text="#{profile.exception}"></title>
+    <link rel="stylesheet" th:href="@{style.css}">
+</head>
+<body>
+<div class="container">
+    <div class="top">
+        <div th:replace="~{navigation :: navigation(exception)}"></div>
+        <div class="header" th:text="#{profile.exception}"></div>
+        <div class="error" th:text="${exception}"></div>
+    </div>
+    <div class="footer"  th:replace="~{footer :: footer(profile)}"></div>
+</div>
+</body>
+</html>

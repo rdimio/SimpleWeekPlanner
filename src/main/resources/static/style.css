@@ -222,6 +222,11 @@ body {
     height:25px;
     width:25px;
 }
+.error{
+    margin: 50px;
+    font-size: 18px;
+    font-style: italic;
+}
 
 
 
