@@ -49,4 +49,12 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<DayTargets> dayTargets;
 
+    public User(Long id, String password, String login, String email, Collection<Role> roles){
+        this.id = id;
+        this.password = password;
+        this.login = login;
+        this.email = email;
+        this.roles = roles;
+    }
+
 }

@@ -46,7 +46,7 @@ VALUES
 
 drop table if exists days cascade;
 create table days
-(id bigserial, title varchar(15), user_id bigint, primary key(id));
+(id bigserial, title varchar(15), primary key(id));
 insert into days(title) values ('Понедельник'),('Вторник'),
 ('Среда'),('Четверг'),('Пятница'),('Суббота'),('Воскресенье'),
 ('Monday'),('Tuesday'),

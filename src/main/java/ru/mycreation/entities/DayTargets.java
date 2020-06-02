@@ -38,4 +38,13 @@ public class DayTargets {
     @JoinColumn(name = "user_id")
     private User user;
 
+    public DayTargets(Long id, String title, int priority, String creation, Time time, User user) {
+        this.id = id;
+        this.title = title;
+        this.priority = priority;
+        this. creation = creation;
+        this.time = time;
+        this.user = user;
+    }
+
 }
