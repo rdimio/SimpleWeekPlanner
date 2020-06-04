@@ -12,7 +12,6 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import java.util.Locale;
 
 @Configuration
-@PropertySource("classpath:private.properties")
 public class AppConfig implements WebMvcConfigurer {
 
     @Bean

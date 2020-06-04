@@ -8,3 +8,6 @@ used dependencies:
 - Spring Security
 - Postgres
 - Thymeleaf
+
+for correct work enter your database parameters in application.properties
+
